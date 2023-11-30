@@ -1,6 +1,7 @@
 package it.betacom.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,7 +44,19 @@ public class EditoreDaoImpl implements EditoreDao {
 	@Override
 	public void createEditore(Editore editore) {
 		
-		listaEditori.add(editore);
+		//Con questa sitassi la connessione verrà chiusa automaticamente grazie al try-whith-resource
+		
+		try (Connection connection = DbHandler.getConnection();
+			PreparedStatement pStm = connection.prepareStatement("INSERT INTO editore (nome, idEditore) VALUES (?, ?)")){
+			
+			pStm.setString(1, editore.getNome());
+			pStm.setInt(2, editore.getCodiceEditore());
+			pStm.executeUpdate();
+			
+			System.out.println("Editore inserito correttamente - Nome: " + editore.getNome() + " id: " + editore.getCodiceEditore());
+		}catch (SQLException e) {
+			System.out.println("Errore inserimento editore" + e);
+		}
 	}
 
 	@Override
