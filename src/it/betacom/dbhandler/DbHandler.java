@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DbHandler {
 
-	private static final String jdbc_url = "jdbc:mysql://localhost:3306/esEstrazione";
+	private static final String jdbc_url = "jdbc:mysql://localhost:3306/libri";
 	private static final String username = "root";
 	private static final String password = "rootroot";
 	

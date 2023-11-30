@@ -1,9 +1,14 @@
 package it.betacom.dao.impl;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import it.betacom.dao.EditoreDao;
+import it.betacom.dbhandler.DbHandler;
 import it.betacom.model.Editore;
 
 public class EditoreDaoImpl implements EditoreDao {
@@ -12,15 +17,25 @@ public class EditoreDaoImpl implements EditoreDao {
 	
 	public EditoreDaoImpl() {
 		
-		listaEditori = new ArrayList<>();
-		listaEditori.add(new Editore("Rizzoli", 1));
-		listaEditori.add(new Editore("Mondadori", 2));
-		listaEditori.add(new Editore("Cairo", 3));
-		listaEditori.add(new Editore("Hachette", 4));
 	}
 
 	@Override
 	public List<Editore> getAllEditore() {
+		List<Editore> listaEditori = new ArrayList<>();
+		
+		Connection connection = DbHandler.getConnection();
+		try {
+			Statement stm = connection.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM editore");
+			
+			while(rs.next()) {
+				String nome = rs.getString("nome");
+				int idEditore = rs.getInt("idEditore");
+				listaEditori.add(new Editore(nome, idEditore));
+			}
+		} catch (SQLException e) {
+			System.out.println("Errore nello stabilire la connessione " + e);
+		}
 		
 		return listaEditori;
 	}
