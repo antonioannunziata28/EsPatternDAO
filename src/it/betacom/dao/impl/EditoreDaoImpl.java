@@ -62,13 +62,24 @@ public class EditoreDaoImpl implements EditoreDao {
 	@Override
 	public Editore readEditoreById(int idEditore) {
 		
-		for(Editore e : listaEditori) {
-			if(e.getCodiceEditore() == idEditore) {
-				return e;
+		try(Connection connection = DbHandler.getConnection();
+			PreparedStatement pStm = connection.prepareStatement("SELECT * FROM editore WHERE idEditore = ?")){
+			
+			pStm.setInt(1, idEditore);
+			ResultSet rs = pStm.executeQuery();
+			if(rs.next()) {
+				String nome = rs.getString("nome");
+				int codiceEditore = rs.getInt("idEditore");
+				return new Editore(nome, codiceEditore);
+			} else {
+				System.out.println("Corrispondenza editore non trovata");
+				return null;
 			}
-		}
-		System.out.println("Corrispondenza non trovata");
-		return null;
+			
+			} catch (SQLException e) {
+				System.out.println("Lettura editore non andata a buon fine " + e);
+				return null;
+			}
 	}
 
 	@Override

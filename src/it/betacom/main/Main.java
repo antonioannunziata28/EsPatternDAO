@@ -77,24 +77,24 @@ public class Main {
 			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
 		}
 		System.out.println("---------------------------------");
-		
-		//aggiornare un editore e stampare la lista
-		nuovoEditore.setNome("Marotta e Figli");
-		eDao.updateEditore(nuovoEditore);
-		System.out.println("Editore aggiornato correttamente, nome: " + nuovoEditore.getNome());
-		System.out.println();
-		for(Editore e : eDao.getAllEditore()) {
-			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
-		}
-		System.out.println("---------------------------------");
-		
-		//eliminiamo un determinato editore e stampare la lista
-		eDao.deleteEditore(nuovoEditore);
-		System.out.println("Eliminato correttamente editore " + nuovoEditore.getNome() + " codice: " + nuovoEditore.getCodiceEditore());
-		System.out.println();
-		for(Editore e: eDao.getAllEditore()) {
-			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
-		}
+//		
+//		//aggiornare un editore e stampare la lista
+//		nuovoEditore.setNome("Marotta e Figli");
+//		eDao.updateEditore(nuovoEditore);
+//		System.out.println("Editore aggiornato correttamente, nome: " + nuovoEditore.getNome());
+//		System.out.println();
+//		for(Editore e : eDao.getAllEditore()) {
+//			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
+//		}
+//		System.out.println("---------------------------------");
+//		
+//		//eliminiamo un determinato editore e stampare la lista
+//		eDao.deleteEditore(nuovoEditore);
+//		System.out.println("Eliminato correttamente editore " + nuovoEditore.getNome() + " codice: " + nuovoEditore.getCodiceEditore());
+//		System.out.println();
+//		for(Editore e: eDao.getAllEditore()) {
+//			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
+//		}
 		
 	}
 
