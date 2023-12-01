@@ -62,21 +62,21 @@ public class Main {
 		System.out.println("---------------------------------");
 		
 		//stampiamo i dati di un determinato editore
-		String nomeEditore = eDao.readEditoreById(1).getNome();
-		int codiceEditore = eDao.readEditoreById(1).getCodiceEditore();
+		String nomeEditore = eDao.readEditoreById(5).getNome();
+		int codiceEditore = eDao.readEditoreById(5).getCodiceEditore();
 		System.out.println("Nome: " + nomeEditore + " codice: " + codiceEditore);
 		System.out.println("---------------------------------");
 		
 		//inseriamo un nuovo editore e stampiamo la lista degli editore
-		Editore nuovoEditore = new Editore("Marotta", 5);
-		eDao.createEditore(nuovoEditore);
-		System.out.println("Nuovo editore creato: " + nuovoEditore.getNome() + " codice: " + nuovoEditore.getCodiceEditore());
-		System.out.println();
-		
-		for(Editore e : eDao.getAllEditore()) {
-			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
-		}
-		System.out.println("---------------------------------");
+//		Editore nuovoEditore = new Editore("Marotta", 5);
+//		eDao.createEditore(nuovoEditore);
+//		System.out.println("Nuovo editore creato: " + nuovoEditore.getNome() + " codice: " + nuovoEditore.getCodiceEditore());
+//		System.out.println();
+//		
+//		for(Editore e : eDao.getAllEditore()) {
+//			System.out.println("Nome: " + e.getNome() + " codice: " + e.getCodiceEditore());
+//		}
+//		System.out.println("---------------------------------");
 //		
 //		//aggiornare un editore e stampare la lista
 //		nuovoEditore.setNome("Marotta e Figli");

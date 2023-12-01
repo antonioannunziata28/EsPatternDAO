@@ -28,7 +28,7 @@ public class DbHandler {
 		return null;
 	}
 	
-	public static void closeConnection() {
+	public static void closeConnection(Connection connection) {
 		try {
 			if(connection != null && !connection.isClosed()) {
 				connection.close();
